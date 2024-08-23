@@ -919,6 +919,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca027d5bc5588745a9ed595d9112948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 0}
+  effectPrefab2: {fileID: 0}
+  objectHP: 3
 --- !u!65 &1689727088
 BoxCollider:
   m_ObjectHideFlags: 0
