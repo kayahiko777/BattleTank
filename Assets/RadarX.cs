@@ -22,7 +22,7 @@ public class RadarX : MonoBehaviour
             // ２点間(今回は「自分」と「ターゲット」の位置）の距離を取得する（ポイント）
             dis = Vector3.Distance(transform.position, target.transform.position);
 
-        if(dis < 5)
+            if(dis < 5)
             {
                 // LookAt（）・・・＞指定した方向にオブジェクトの向きを回転させることができる。
                 transform.LookAt(target.transform);

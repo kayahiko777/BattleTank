@@ -26,9 +26,10 @@ public class EnemyShotShell : MonoBehaviour
 
             // forwardはZ軸方向（青軸方向）・・・＞この方向に力を加える
             enemyShellRb.AddForce(transform.forward * shotSpeed);
-
-            //AudioSource.PlayClipAtPoint(shotSound, transform.position);
-
+            if (shotSound != null)
+            {
+                AudioSource.PlayClipAtPoint(shotSound, transform.position);
+            }
             Destroy(enemyShell, 3.0f);
         }
     }
