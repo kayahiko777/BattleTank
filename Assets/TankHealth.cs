@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TankHealth : MonoBehaviour
 {
@@ -30,10 +31,20 @@ public class TankHealth : MonoBehaviour
                 Destroy(effect2, 1.0f);
 
                 // プレーヤーを破壊する。
-                Destroy(gameObject);
+               // Destroy(gameObject);
+
+                this.gameObject.SetActive(false);
+
+                Invoke("GoToGameOver", 1.0f);
             }
         }
     }
+
+    void GoToGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
