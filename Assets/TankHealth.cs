@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class TankHealth : MonoBehaviour
 {
     public GameObject effectPrefab1;
     public GameObject effectPrefab2;
     public int tankHP;
+    public TextMeshProUGUI hpLabel;
+
+    private int tankMaxHP = 10;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +20,8 @@ public class TankHealth : MonoBehaviour
         {
             // HP‚ð‚P‚¸‚ÂŒ¸­‚³‚¹‚éB
             tankHP -= 1;
+
+            hpLabel.text = "" + tankHP;
 
             // ‚Ô‚Â‚©‚Á‚Ä‚«‚½‘ŠŽè•ûi“G‚Ì–C’ej‚ð”j‰ó‚·‚éB
             Destroy(other.gameObject);
@@ -45,10 +51,23 @@ public class TankHealth : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
 
+    public void AddHP(int amount)
+    {
+        tankHP += amount;
+
+        if(tankHP > tankMaxHP)
+        {
+            tankHP = tankMaxHP;
+        }
+
+        hpLabel.text = "" + tankHP;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        tankHP = tankMaxHP;
+        hpLabel.text = "" + tankHP;
     }
 
     // Update is called once per frame
