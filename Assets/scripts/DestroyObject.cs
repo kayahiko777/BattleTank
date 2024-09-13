@@ -8,6 +8,11 @@ public class DestroyObject : MonoBehaviour
 
     public GameObject effectPrefab2; // 2種類目のエフェクトを入れるための箱
     public int objectHP;
+    //配列
+    public GameObject[] itemPrefabs;
+    public float itemHigh;
+    public int scoreValue;
+    private ScoreManager sm;
     // このメソッドはコライダー同士がぶつかった瞬間に呼び出される
     private void OnTriggerEnter(Collider other)
     {
@@ -37,13 +42,36 @@ public class DestroyObject : MonoBehaviour
                 Destroy(effect2, 2.0f);
                 // このスクリプトがついているオブジェクトを破壊する（thisは省略が可能）
                 Destroy(this.gameObject);
+
+                sm.AddScore(scoreValue);
+
+                int itemNumber = Random.Range(0,100);
+
+                if(itemPrefabs.Length != 0)
+                { // （ポイント）pos.y + 0.6fのコードでアイテムの出現場所の「高さ」を調整しています。
+                    Vector3 pos = transform.position;
+                    if(itemNumber < 10)
+                    {
+                        Instantiate(itemPrefabs[0], new Vector3(pos.x, pos.y + itemHigh, pos.z), Quaternion.identity);
+                    }
+
+                    else if(itemNumber < 40)
+                    {
+                        Instantiate(itemPrefabs[1], new Vector3(pos.x, pos.y + itemHigh, pos.z), Quaternion.identity);
+                    }
+                    else
+                    {// itenMunberの数字によって、出るアイテムが変化する
+                        Instantiate(itemPrefabs[2], new Vector3(pos.x, pos.y + itemHigh, pos.z), Quaternion.identity);
+                    }
+                    
+                }              
             }
         }
     }
         // Start is called before the first frame update
         void Start()
     {
-        
+        sm = GameObject.Find("ScoreLabel").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
