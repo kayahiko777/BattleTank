@@ -10,11 +10,19 @@ public class TankHealth : MonoBehaviour
     public GameObject effectPrefab2;
     public int tankHP;
     public TextMeshProUGUI hpLabel;
+    public Shield shield;
 
     private int tankMaxHP = 10;
 
     private void OnTriggerEnter(Collider other)
     {
+        // シールドの残り時間があるなら
+        if (shield.shieldTime > 0)
+        {
+            // ここで処理をとめてHPを減らさない
+            return;
+        }
+
         // もしもぶつかってきた相手のTagが”EnemyShell”であったならば（条件）
         if (other.CompareTag("EnemyShell"))
         {
