@@ -12,7 +12,9 @@ public class DestroyObject : MonoBehaviour
     public GameObject[] itemPrefabs;
     public float itemHigh;
     public int scoreValue;
+    public bool isBoss;
     private ScoreManager sm;
+    private GameManager gameManager;
     // このメソッドはコライダー同士がぶつかった瞬間に呼び出される
     private void OnTriggerEnter(Collider other)
     {
@@ -64,7 +66,14 @@ public class DestroyObject : MonoBehaviour
                         Instantiate(itemPrefabs[2], new Vector3(pos.x, pos.y + itemHigh, pos.z), Quaternion.identity);
                     }
                     
-                }              
+                } 
+                
+                // ボスの場合
+                if(isBoss == true)
+                {
+                    // ボスの倒した数を加算する
+                    gameManager.AddBossCount();
+                }
             }
         }
     }
@@ -72,6 +81,7 @@ public class DestroyObject : MonoBehaviour
         void Start()
     {
         sm = GameObject.Find("ScoreLabel").GetComponent<ScoreManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
