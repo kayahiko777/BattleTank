@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - EnemyShell
   - EnemyShotShell
+  - Enemy
   layers:
   - Default
   - TransparentFX
