@@ -235,6 +235,7 @@ MonoBehaviour:
   - {fileID: 367367131436607824, guid: 823f7e718a17b6140a72e1222c7493d1, type: 3}
   itemHigh: 0.3
   scoreValue: 150
+  isBoss: 0
 --- !u!195 &5525477598224514509
 NavMeshAgent:
   m_ObjectHideFlags: 0
