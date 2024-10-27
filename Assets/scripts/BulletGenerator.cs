@@ -29,9 +29,8 @@ public class BulletGenerator : MonoBehaviour
         }
     void Shot()
         {
-            Vector3 spawnPosition = muzzleTran.position + muzzleTran.forward * 0.5f;
             // e‚Ì”­ËŒû‚ÌˆÊ’u‚É’e‚ğ¶¬
-            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, muzzleTran.rotation);
+            GameObject bullet = Instantiate(bulletPrefab,transform.position,Quaternion.identity);
 
             // ’e‚Ìæ’[‚ÌŒü‚«‚ğAe‚Ì”­ËŒû‚ÌŒü‚¢‚Ä‚¢‚é•ûŒü‚É‡‚í‚¹‚é
             bullet.transform.forward = muzzleTran.forward;
@@ -43,7 +42,7 @@ public class BulletGenerator : MonoBehaviour
             if (bullet.TryGetComponent(out Rigidbody rb))
             {
                 // ’e‚ğ”­Ë
-                rb.AddForce(muzzleTran.forward * shotSpeed);
+                rb.AddForce(transform.forward * shotSpeed);
                 // SE –Â‚ç‚·
                 //AudioSource.PlayClipAtPoint(shotSound, Camera.main.transform.position);
             }

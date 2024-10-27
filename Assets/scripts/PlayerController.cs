@@ -13,9 +13,11 @@ public class PlayerController : MonoBehaviour
     // 移動値
     private Vector3 movement;
     private Rigidbody rb;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         // Rigidbodyコンポーネントを取得し、なければ追加する
         if(!TryGetComponent(out rb))
         {
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ProcessInput();
+        WalkAnim();
     }
 
     void ProcessInput()
@@ -52,6 +55,8 @@ public class PlayerController : MonoBehaviour
 
         // 移動方向に速度を掛ける
         movement *= speed;
+
+        
     }
 
     void FixedUpdate()
@@ -77,5 +82,28 @@ public class PlayerController : MonoBehaviour
         Vector3 desiredMove = cameraForward * movement.z + cameraRight * movement.x;
         // Rigidbody を使って移動。また、ジャンプと落下を考慮して重力(rb.velocity.y)を反映
         rb.velocity = desiredMove + new Vector3(0,rb.velocity.y,0);
+    }
+
+    void WalkAnim()
+    {
+        if(movement.x > 0)
+        {
+            float speed = Mathf.Abs(movement.x);
+            animator.SetFloat("speed", speed);
+        }
+        else
+        {
+            animator.SetFloat("speed", 0);
+        }
+
+        if (movement.z > 0)
+        {
+            float speed = Mathf.Abs(movement.z);
+            animator.SetFloat("speed", speed);
+        }
+        else
+        {
+            animator.SetFloat("speed", 0);
+        }
     }
 }

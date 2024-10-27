@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1903525748436467679, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_Name
+      value: Bullet_Shell1
+      objectReference: {fileID: 0}
     - target: {fileID: 3645167163195212790, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48,11 +52,48 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4423444015769904755, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423444015769904755, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423444015769904755, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423444015769904755, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423444015769904755, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831378945832787133, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831378945832787133, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831378945832787133, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4959198348529856348, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
       propertyPath: m_Name
       value: Bullet_Shell1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7207190958574503185, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
+      propertyPath: m_Name
+      value: Bullet_Shell1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7259392157373324359, guid: 6b9f3b212d520cd468a396fb7e4b48b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
