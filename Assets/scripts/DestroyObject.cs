@@ -31,17 +31,17 @@ public class DestroyObject : MonoBehaviour
                 Destroy(other.gameObject);
 
                 // エフェクトを実体化する
-                GameObject effect = Instantiate(effectPrefab,other.transform.position, Quaternion.identity);
+               // GameObject effect = Instantiate(effectPrefab,other.transform.position, Quaternion.identity);
 
                 // エフェクトを２秒後に消す
-                Destroy(effect, 2.0f);
+               // Destroy(effect, 2.0f);
             }
             else
             {
                 Destroy(other.gameObject);
 
-                GameObject effect2 = Instantiate(effectPrefab2, other.transform.position, Quaternion.identity);
-                Destroy(effect2, 2.0f);
+                //GameObject effect2 = Instantiate(effectPrefab2, other.transform.position, Quaternion.identity);
+               // Destroy(effect2, 2.0f);
                 // このスクリプトがついているオブジェクトを破壊する（thisは省略が可能）
                 Destroy(this.gameObject);
 

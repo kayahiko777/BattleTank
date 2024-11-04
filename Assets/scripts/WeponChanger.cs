@@ -6,8 +6,14 @@ public class WeponChanger : MonoBehaviour
 {
     public GameObject[] weponCameras;
     public GameObject[] rawImages;
+    public GameObject[] weapons;
     public int weponIndex;
     public float whiileRange;
+
+    public int currentWeaponNo;
+
+    [SerializeField]
+    private PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +36,14 @@ public class WeponChanger : MonoBehaviour
 
     private void ChangeWepon()
     {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            weapons[i].SetActive(false);
+        }
+
+        // 現在の武器オブジェクトをアクティブ化
+        weapons[weponIndex].SetActive(true);
+        Debug.Log("ピストルに切り替え");
         //weponIndexの同じ番号の配列の武器をUIに表示する
         for (int i = 0; i < weponCameras.Length; i++)
         {
@@ -38,5 +52,10 @@ public class WeponChanger : MonoBehaviour
         }
         weponCameras[weponIndex].SetActive(true);
         rawImages[weponIndex].SetActive(true);
+
+        currentWeaponNo = weponIndex;
+
+        Debug.Log("武器交換");
+
     }
 }
