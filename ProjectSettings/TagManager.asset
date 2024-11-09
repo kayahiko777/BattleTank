@@ -10,6 +10,7 @@ TagManager:
   - EnemyShotShell
   - Enemy
   - Item
+  - Key
   layers:
   - Default
   - TransparentFX
