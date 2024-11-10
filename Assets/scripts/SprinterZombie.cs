@@ -22,7 +22,7 @@ public class SprinterZombie : MonoBehaviour
             target = GameObject.Find("Player");
         }
 
-        agent = target.GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
 
 
         agent.speed = sprintSpeed;

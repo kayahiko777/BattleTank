@@ -13,6 +13,7 @@ public class DestroyObject : MonoBehaviour
     public float itemHigh;
     public int scoreValue;
     public bool isBoss;
+    public int keyRate;
     private ScoreManager sm;
     private GameManager gameManager;
     // このメソッドはコライダー同士がぶつかった瞬間に呼び出される
@@ -47,6 +48,24 @@ public class DestroyObject : MonoBehaviour
 
                 sm.AddScore(scoreValue);
 
+                // ボスの場合
+                if (isBoss == true)
+                {
+                    // ボスの倒した数を加算する
+                    gameManager.AddBossCount();
+                }
+
+                int randomKeyValue = Random.Range(0, 100);
+                if (randomKeyValue < keyRate)
+                {
+                    GameObject keySpawn = GameObject.Find("KeySpawn");
+                    if (keySpawn != null)
+                    {
+                        KeySpawnManager keySpawnManager = keySpawn.GetComponent<KeySpawnManager>();
+                        keySpawnManager.SpawnKeyfromEnemy(transform);
+                        return;
+                    }
+                }
                 int itemNumber = Random.Range(0,100);
 
                 if(itemPrefabs.Length != 0)
@@ -68,12 +87,7 @@ public class DestroyObject : MonoBehaviour
                     
                 } 
                 
-                // ボスの場合
-                if(isBoss == true)
-                {
-                    // ボスの倒した数を加算する
-                    gameManager.AddBossCount();
-                }
+               
             }
         }
     }

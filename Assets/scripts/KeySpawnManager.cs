@@ -20,19 +20,23 @@ public class KeySpawnManager : MonoBehaviour
         HashSet<int> selectedIndexs = new HashSet<int>();
         while(selectedIndexs.Count < 3)
         {
-            selectedIndexs.Add(Random.Range(0,keySpawnPoints.Count));
+            int index = Random.Range(0, keySpawnPoints.Count);
+            selectedIndexs.Add(index);
         }
         foreach (int index in selectedIndexs)
         {
             // Œ®‚ð¶¬
-            Instantiate(keyPrefab,keySpawnPoints[index].position,Quaternion.identity);
+            Instantiate(keyPrefab, keySpawnPoints[index].position, Quaternion.identity);
+        }
+        foreach (Transform tran in keySpawnPoints)
+        {
+
         }
     }
 
     
-    // Update is called once per frame
-    void Update()
+    public void SpawnKeyfromEnemy(Transform enemyTran)
     {
-        
+        Instantiate(keyPrefab, enemyTran.position, Quaternion.identity);
     }
 }
