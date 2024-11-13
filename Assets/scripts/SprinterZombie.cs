@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,13 +8,16 @@ public class SprinterZombie : MonoBehaviour
 {
     [SerializeField] private GameObject target;
     public float sprintSpeed = 10f;
+    public float walkSpeed = 3f;
     public float detectionRange = 15f;
     public int damage = 3;
     public float attackRange = 1.5f;
     public float attackCooldown = 2f;
+    public float runDistance = 10f;
 
     private NavMeshAgent agent;
     private float nextAttackTime = 0f;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +27,10 @@ public class SprinterZombie : MonoBehaviour
         }
 
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
 
-        agent.speed = sprintSpeed;
+        agent.speed = walkSpeed;
 
         if(target == null)
         {
@@ -46,6 +51,17 @@ public class SprinterZombie : MonoBehaviour
             {
                 // ターゲットの位置を目的地に設定
                 agent.destination = target.transform.position;
+
+                if(distanceToPlayer <= runDistance)
+                {
+                    agent.speed = sprintSpeed;
+                    animator.SetBool("isRunning", true);
+                }
+                else
+                {
+                    agent.speed = walkSpeed;
+                    animator.SetBool("isRunning", false);
+                }
                
                 // 攻撃範囲にいる場合攻撃する
                 if (distanceToPlayer <= attackRange && Time.time >= nextAttackTime)
