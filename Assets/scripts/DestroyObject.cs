@@ -16,9 +16,15 @@ public class DestroyObject : MonoBehaviour
     public int keyRate;
     private ScoreManager sm;
     private GameManager gameManager;
+    private Animator animator;
+    private bool isDead;
     // このメソッドはコライダー同士がぶつかった瞬間に呼び出される
     private void OnTriggerEnter(Collider other)
     {
+        if(isDead == true)
+        { 
+            return; 
+        }
         // もしもぶつかった相手のTagにShellという名前が書いてあったならば（条件）
         if (other.CompareTag("Shell"))
         {
@@ -39,12 +45,18 @@ public class DestroyObject : MonoBehaviour
             }
             else
             {
+                Debug.Log("HP" + objectHP);
+                isDead = true;
                 Destroy(other.gameObject);
 
+                if (animator != null)
+                {
+                    animator.SetBool("isDown", true);
+                }
                 //GameObject effect2 = Instantiate(effectPrefab2, other.transform.position, Quaternion.identity);
                // Destroy(effect2, 2.0f);
                 // このスクリプトがついているオブジェクトを破壊する（thisは省略が可能）
-                Destroy(this.gameObject);
+                Destroy(this.gameObject,1.5f);
 
                 sm.AddScore(scoreValue);
 
@@ -96,6 +108,7 @@ public class DestroyObject : MonoBehaviour
     {
         sm = GameObject.Find("ScoreLabel").GetComponent<ScoreManager>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

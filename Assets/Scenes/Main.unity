@@ -206,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 100002, guid: a24c2dc4ddb2fb34591d1bbab6a8354a, type: 3}
   effectPrefab2: {fileID: 100006, guid: 7c442b9b6852b8a4f93306f3d154d471, type: 3}
-  objectHP: 10
+  objectHP: 1
   itemPrefabs:
   - {fileID: 8937037461021145039, guid: 4309f3ba42d0a024cb02731091b1d932, type: 3}
   - {fileID: 6913877812399012760, guid: e9363838651caf14980cb8446bfdd585, type: 3}
@@ -37282,7 +37282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 578376449398627443, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: -0.005
       objectReference: {fileID: 0}
     - target: {fileID: 578376449398627443, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_LocalPosition.z

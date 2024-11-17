@@ -74,6 +74,9 @@ public class SprinterZombie : MonoBehaviour
 
     private void AttackPlayer()
     {
+        // 攻撃アニメーションを再生
+        animator.SetTrigger("Attack");
+
         // プレイヤーにダメージを与える
         PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
         if (playerHealth != null)
